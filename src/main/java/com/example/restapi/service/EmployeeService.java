@@ -1,19 +1,19 @@
 package com.example.restapi.service;
 
-import com.example.restapi.model.Employee;
+import com.example.restapi.model.register;
 
 import java.util.List;
 
 public interface EmployeeService {
 //    this method to get the employee data n save method
-    Employee saveEmployee (Employee employee);
+    register saveEmployee (register employee);
 
 //    this method to show the list of employees in a database
-    List<Employee> getAllEmployees();
+    List<register> getAllEmployees();
 //    this method shows the eployee list by id
-    Employee getEmployeeById(Long id);
+    register getEmployeeById(Long id);
 //    this for update employee
-    Employee updateEmployee(Employee employee, long id);
+    register updateEmployee(register employee, long id);
 //    this for delete employee
     void deleteEmployee(long id);
 
