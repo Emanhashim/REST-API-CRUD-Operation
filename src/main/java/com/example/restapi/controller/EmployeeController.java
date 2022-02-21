@@ -1,6 +1,6 @@
 package com.example.restapi.controller;
 
-import com.example.restapi.model.Employee;
+import com.example.restapi.model.register;
 import com.example.restapi.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,28 +22,28 @@ public class EmployeeController {
     }
 //    build and create rest api to create employee, insert employee
     @PostMapping
-    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee){
-        return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
+    public ResponseEntity<register> saveEmployee(@RequestBody register employee){
+        return new ResponseEntity<register>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
 //    builds to get all employees restapi, fetch employee
     @GetMapping()
-    public List<Employee> getAllEmployees(){
+    public List<register> getAllEmployees(){
         return  employeeService.getAllEmployees();
     }
 
 //    get all employee by id rest api
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long employeeid){
-return new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeid), HttpStatus.OK);
+    public ResponseEntity<register> getEmployeeById(@PathVariable("id") long employeeid){
+return new ResponseEntity<register>(employeeService.getEmployeeById(employeeid), HttpStatus.OK);
     }
 
 //this for update employee
     @PutMapping("{id}")
 //this uses to update the id, as http:localhost:8080/api/employee/1, kind of form
-    public  ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id,
-                                                    @RequestBody Employee employee){
-        return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+    public  ResponseEntity<register> updateEmployee(@PathVariable("id") long id,
+                                                    @RequestBody register employee){
+        return new ResponseEntity<register>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
     }
 
 //    this for delete employee

@@ -1,7 +1,7 @@
 package com.example.restapi.service.impl;
 
 import com.example.restapi.exception.ResourceNotFoundException;
-import com.example.restapi.model.Employee;
+import com.example.restapi.model.register;
 import com.example.restapi.repository.EmployeeRepository;
 import com.example.restapi.service.EmployeeService;
 import org.springframework.stereotype.Service;
@@ -22,18 +22,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 //    here we implement the interface to save all method on interface
     @Override
-    public Employee saveEmployee(Employee employee) {
+    public register saveEmployee(register employee) {
         return employeeRepository.save(employee);
     }
 //this implements the show all employees method on interface
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<register> getAllEmployees() {
         return employeeRepository.findAll();
     }
 //this impplements the show all employees by id
     @Override
-    public Employee getEmployeeById(Long id) {
-        Optional<Employee> employee = employeeRepository.findById(id);
+    public register getEmployeeById(Long id) {
+        Optional<register> employee = employeeRepository.findById(id);
 
 //        if(employee.isPresent()){
 //        return employee.get();
@@ -45,14 +45,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 //this for update implement
     @Override
-    public Employee updateEmployee(Employee employee, long id) {
+    public register updateEmployee(register employee, long id) {
 //  first we gotta check whether employee with this id exists in db or not
-        Employee existingEmployee = employeeRepository.findById(id).orElseThrow(
+        register existingEmployee = employeeRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Employee", "Id", id));
+        existingEmployee.setBirth(employee.getBirth());
+      existingEmployee.setCountry(employee.getCountry());
+      existingEmployee.setEmail(employee.getEmail());
+      existingEmployee.setFirst_name(employee.getFirst_name());
+      existingEmployee.setLast_name(employee.getLast_name());
+      existingEmployee.setPhone(employee.getPhone());
+      existingEmployee.setPassword(employee.getPassword());
+      existingEmployee.setRe_password(employee.getRe_password());
 
-        existingEmployee.setFirstName(employee.getFirstName());
-        existingEmployee.setLastName(employee.getLastName());
-        existingEmployee.setEmail(employee.getEmail());
 
 //        this save the existing employee to db
         employeeRepository.save(existingEmployee);
