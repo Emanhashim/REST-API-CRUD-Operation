@@ -37,5 +37,8 @@ public class register {
     @Column(name = "re_password")
     private String re_password;
 
+    @Column(name = "role")
+    private String role = "user";
+
 
 }
